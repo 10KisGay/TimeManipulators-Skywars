@@ -1,0 +1,692 @@
+local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
+
+local Window = Rayfield:CreateWindow({
+	Name = "TimeManipulator | script#6185",
+	LoadingTitle = "sub to me channel | TimeManipulator",
+	LoadingSubtitle = "by script",
+	ConfigurationSaving = {
+		Enabled = true,
+		FolderName = nil, -- Create a custom folder for your hub/game
+		FileName = "TimeHub"
+	},
+        Discord = {
+        	Enabled = false,
+        	Invite = "sirius", -- The Discord invite code, do not include discord.gg/
+        	RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+        },
+	KeySystem = true, -- Set this to true to use our key system
+	KeySettings = {
+		Title = "TimeHub | script#6185",
+		Subtitle = "Key System",
+		Note = "sub to my youtube | TimeManipulator",
+		FileName = "SiriusKey",
+		SaveKey = true,
+		GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+		Key = "2000112386"
+	}
+})
+
+local Tab = Window:CreateTab("Main", 4483362458) -- Title, Image
+local Section = Tab:CreateSection("Main Stuff")
+
+
+local Button = Tab:CreateButton({
+	Name = "Bypasser",
+	Callback = function()
+        print("Clicked")
+        if game:GetService("Players").LocalPlayer.PlayerGui.Extra:FindFirstChild("Local") then
+            local plr       = game:GetService("Players").LocalPlayer
+            local workspace = game:GetService("Workspace")
+    
+            plr.PlayerGui:WaitForChild("Extra"):WaitForChild("Local").Parent = game:GetService("Workspace")
+            plr.PlayerGui:WaitForChild("Extra"):WaitForChild("Local").Parent = game:GetService("Workspace")
+            plr.PlayerGui:WaitForChild("Extra"):WaitForChild("MobileFix").Parent = game:GetService("Workspace")
+            plr.PlayerGui:WaitForChild("Extra"):WaitForChild("XboxFix").Parent = game:GetService("Workspace")
+            wait()
+            workspace:FindFirstChild("Local"):Destroy()
+            workspace:FindFirstChild("Local"):Destroy()
+            workspace:FindFirstChild("MobileFix"):Destroy()
+            workspace:FindFirstChild("XboxFix"):Destroy()
+            game.workspace.Borders.InvisibleBorder:remove()
+            game.workspace.Lobby.KillPlates:remove()
+            venyx:Notify("Bypassed", "Bypassed: true")
+    
+            plr.CharacterAdded:Connect(function()
+                plr.PlayerGui:WaitForChild("Extra"):WaitForChild("Local").Parent = game:GetService("Workspace")
+                plr.PlayerGui:WaitForChild("Extra"):WaitForChild("Local").Parent = game:GetService("Workspace")
+                plr.PlayerGui:WaitForChild("Extra"):WaitForChild("MobileFix").Parent = game:GetService("Workspace")
+                plr.PlayerGui:WaitForChild("Extra"):WaitForChild("XboxFix").Parent = game:GetService("Workspace")
+                wait()
+                workspace:FindFirstChild("Local"):Destroy()
+                workspace:FindFirstChild("Local"):Destroy()
+                workspace:FindFirstChild("MobileFix"):Destroy()
+                workspace:FindFirstChild("XboxFix"):Destroy()
+            end)
+        else
+            venyx:Notify("Really", "Bypassed")           
+        end
+    
+	end,
+})
+
+local Button = Tab:CreateButton({
+	Name = "Shield Godmode",
+	Callback = function()
+        local Why      = game:GetService("Players").LocalPlayer
+		local Char     = Why.Character
+		local backpack = Why.Backpack
+
+		Char.Humanoid:UnequipTools()
+		wait()
+		for i,v in next, backpack:GetDescendants() do
+			if v:IsA("Tool") and v.Name =="Shield" then
+				v.GripPos         = Vector3.new(0,df8767733,0)
+				v.Handle.Massless = true
+				v.Parent          = Char
+				v:Activate()
+				v.ShieldPotion:Destroy()
+				v:Destroy()
+			end
+		end
+
+	end,
+})
+
+local Button = Tab:CreateButton({
+	Name = "Baseplate",
+	Callback = function()
+        print("Clicked")
+        local baseplate    = Instance.new("Part")
+        baseplate.Parent   = workspace
+        baseplate.Name = "MomentoXD"
+        baseplate.Transparency = 0.5
+        baseplate.Size     = Vector3.new(800,1,800) -- change size
+        baseplate.Anchored = true
+        baseplate.Position = Workspace.Lobby["Middle Room"].Floor.Base.Union.Position + Vector3.new(0,-110,0)
+    
+        if value == false then
+            game.Workspace["MomentoXD"]:Destroy()
+        end
+    
+    
+	end,
+})
+
+local Button = Tab:CreateButton({
+	Name = "Reach",
+	Callback = function()
+        print("Clicked")
+        local active = true
+        local trueActive = true
+        local reachType = "Sphere"
+        local dmgEnabled = true
+        local visualizerEnabled = false
+    
+        local visualizer = Instance.new("Part")
+        visualizer.BrickColor = BrickColor.Blue()
+        visualizer.Transparency = 0.6
+        visualizer.Anchored = true
+        visualizer.CanCollide = false
+        visualizer.Size = Vector3.new(0.5,0.5,0.5)
+        visualizer.BottomSurface = Enum.SurfaceType.Smooth
+        visualizer.TopSurface = Enum.SurfaceType.Smooth
+    
+        local ScreenGui = Instance.new("ScreenGui")
+        local Frame = Instance.new("Frame")
+        local TextLabel = Instance.new("TextLabel")
+        local TextBox = Instance.new("TextBox")
+        local TextLabel_2 = Instance.new("TextLabel")
+        local TextLabel_3 = Instance.new("TextLabel")
+        local TextLabel_4 = Instance.new("TextLabel")
+        local TextButton = Instance.new("TextButton")
+        local Frame_2 = Instance.new("Frame")
+        local Frame_3 = Instance.new("Frame")
+        local Frame_4 = Instance.new("Frame")
+        local Frame_5 = Instance.new("Frame")
+        local TextButton_2 = Instance.new("TextButton")
+    
+        --Properties:
+    
+        ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+        ScreenGui.DisplayOrder = 999999999
+        ScreenGui.ResetOnSpawn = false
+    
+        Frame.Parent = ScreenGui
+        Frame.AnchorPoint = Vector2.new(0, 0.5)
+        Frame.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+        Frame.BackgroundTransparency = 0.300
+        Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        Frame.BorderSizePixel = 4
+        Frame.Position = UDim2.new(0, 0, 0.600000024, 0)
+        Frame.Size = UDim2.new(0.150000006, 0, 0.300000012, 0)
+    
+        TextLabel.Parent = Frame
+        TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        TextLabel.BackgroundTransparency = 1.000
+        TextLabel.Size = UDim2.new(0.600000024, 0, 0.200000003, 0)
+        TextLabel.Font = Enum.Font.SourceSans
+        TextLabel.Text = "Reach:"
+        TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+        TextLabel.TextScaled = true
+        TextLabel.TextSize = 14.000
+        TextLabel.TextWrapped = true
+    
+        TextBox.Parent = Frame
+        TextBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        TextBox.BackgroundTransparency = 1.000
+        TextBox.Position = UDim2.new(0.600000024, 0, 0, 0)
+        TextBox.Size = UDim2.new(0.400000006, 0, 0.200000003, 0)
+        TextBox.Font = Enum.Font.SourceSans
+        TextBox.Text = "3.5"
+        TextBox.TextColor3 = Color3.fromRGB(255, 76, 76)
+        TextBox.TextScaled = true
+        TextBox.TextSize = 14.000
+        TextBox.TextWrapped = true
+    
+        TextLabel_2.Parent = Frame
+        TextLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        TextLabel_2.BackgroundTransparency = 1.000
+        TextLabel_2.Position = UDim2.new(0, 0, 0.200000003, 0)
+        TextLabel_2.Size = UDim2.new(0.600000024, 0, 0.200000003, 0)
+        TextLabel_2.Font = Enum.Font.SourceSans
+        TextLabel_2.Text = "Shape:"
+        TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+        TextLabel_2.TextScaled = true
+        TextLabel_2.TextSize = 14.000
+        TextLabel_2.TextWrapped = true
+    
+        TextLabel_3.Parent = Frame
+        TextLabel_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        TextLabel_3.BackgroundTransparency = 1.000
+        TextLabel_3.Position = UDim2.new(0, 0, 0.400000006, 0)
+        TextLabel_3.Size = UDim2.new(0.600000024, 0, 0.200000003, 0)
+        TextLabel_3.Font = Enum.Font.SourceSans
+        TextLabel_3.Text = "Damage:"
+        TextLabel_3.TextColor3 = Color3.fromRGB(255, 255, 255)
+        TextLabel_3.TextScaled = true
+        TextLabel_3.TextSize = 14.000
+        TextLabel_3.TextWrapped = true
+    
+        TextLabel_4.Parent = Frame
+        TextLabel_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        TextLabel_4.BackgroundTransparency = 1.000
+        TextLabel_4.Position = UDim2.new(0, 0, 0.600000024, 0)
+        TextLabel_4.Size = UDim2.new(0.600000024, 0, 0.200000003, 0)
+        TextLabel_4.Font = Enum.Font.SourceSans
+        TextLabel_4.Text = "Visualizer:"
+        TextLabel_4.TextColor3 = Color3.fromRGB(255, 255, 255)
+        TextLabel_4.TextScaled = true
+        TextLabel_4.TextSize = 14.000
+        TextLabel_4.TextWrapped = true
+    
+        TextButton.Parent = Frame
+        TextButton.AnchorPoint = Vector2.new(0, 1)
+        TextButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        TextButton.BackgroundTransparency = 1.000
+        TextButton.Position = UDim2.new(0, 0, 1, 0)
+        TextButton.Size = UDim2.new(1, 0, 0.150000006, 0)
+        TextButton.Font = Enum.Font.SourceSansBold
+        TextButton.Text = "Kill Script"
+        TextButton.TextColor3 = Color3.fromRGB(222, 0, 0)
+        TextButton.TextScaled = true
+        TextButton.TextSize = 14.000
+        TextButton.TextWrapped = true
+    
+        Frame_2.Parent = Frame
+        Frame_2.Active = true
+        Frame_2.AnchorPoint = Vector2.new(0, 0.5)
+        Frame_2.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+        Frame_2.BorderSizePixel = 0
+        Frame_2.Position = UDim2.new(0.725000024, 0, 0.699999988, 0)
+        Frame_2.Size = UDim2.new(0, 25, 0, 25)
+        Frame_2.ZIndex = 5
+    
+        Frame_3.Parent = Frame_2
+        Frame_3.AnchorPoint = Vector2.new(0.5, 0.5)
+        Frame_3.BackgroundColor3 = Color3.fromRGB(255, 76, 76)
+        Frame_3.BorderSizePixel = 0
+        Frame_3.LayoutOrder = 1
+        Frame_3.Position = UDim2.new(0.5, 0, 0.5, 0)
+    
+        Frame_4.Parent = Frame
+        Frame_4.Active = true
+        Frame_4.AnchorPoint = Vector2.new(0, 0.5)
+        Frame_4.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+        Frame_4.BorderSizePixel = 0
+        Frame_4.Position = UDim2.new(0.725000024, 0, 0.5, 0)
+        Frame_4.Size = UDim2.new(0, 25, 0, 25)
+        Frame_4.ZIndex = 5
+    
+        Frame_5.Parent = Frame_4
+        Frame_5.AnchorPoint = Vector2.new(0.5, 0.5)
+        Frame_5.BackgroundColor3 = Color3.fromRGB(255, 76, 76)
+        Frame_5.BorderSizePixel = 0
+        Frame_5.LayoutOrder = 1
+        Frame_5.Position = UDim2.new(0.5, 0, 0.5, 0)
+        Frame_5.Size = UDim2.new(1, 0, 1, 0)
+    
+        TextButton_2.Parent = Frame
+        TextButton_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        TextButton_2.BackgroundTransparency = 1.000
+        TextButton_2.Position = UDim2.new(0.600000024, 0, 0.200000003, 0)
+        TextButton_2.Size = UDim2.new(0.400000006, 0, 0.200000003, 0)
+        TextButton_2.Font = Enum.Font.SourceSans
+        TextButton_2.Text = "Sphere"
+        TextButton_2.TextColor3 = Color3.fromRGB(255, 76, 76)
+        TextButton_2.TextScaled = true
+        TextButton_2.TextSize = 14.000
+        TextButton_2.TextWrapped = true
+    
+        repeat wait() until game.Players.LocalPlayer
+        ScreenGui.Parent = game:GetService("CoreGui")
+    
+    
+    
+        Frame_4.InputBegan:connect(function(inp)
+            if inp.UserInputType == Enum.UserInputType.MouseButton1 then
+                dmgEnabled = not dmgEnabled
+                local goal = {Size = UDim2.new(0,0,0,0)}
+                if dmgEnabled then
+                    goal = {Size = UDim2.new(1,0,1,0)}
+                end
+                game:GetService("TweenService"):Create(Frame_5,TweenInfo.new(0.12,Enum.EasingStyle.Quad),goal):Play()
+            end
+        end)
+        Frame_2.InputBegan:connect(function(inp)
+            if inp.UserInputType == Enum.UserInputType.MouseButton1 then
+                visualizerEnabled = not visualizerEnabled
+                local goal = {Size = UDim2.new(0,0,0,0)}
+                if visualizerEnabled then
+                    goal = {Size = UDim2.new(1,0,1,0)}
+                end
+                game:GetService("TweenService"):Create(Frame_3,TweenInfo.new(0.12,Enum.EasingStyle.Linear),goal):Play()
+            end
+        end)
+        TextButton_2.MouseButton1Click:connect(function()
+            if reachType == "Sphere" then
+                reachType = "Line"
+            else
+                reachType = "Sphere"
+            end
+            TextButton_2.Text = reachType
+        end)
+        TextButton.MouseButton1Click:connect(function()
+            trueActive = false
+            ScreenGui:Destroy()
+        end)
+        game:GetService("UserInputService").InputBegan:connect(function(inp,gpe)
+            if gpe then return end
+            if inp.KeyCode == Enum.KeyCode.H then
+                ScreenGui.Enabled = not ScreenGui.Enabled
+            end
+        end)
+    
+        local plr = game.Players.LocalPlayer
+    
+        local function onHit(hit,handle)
+            local victim = hit.Parent:FindFirstChildOfClass("Humanoid")
+            if victim and victim.Parent.Name ~= game.Players.LocalPlayer.Name then
+                if dmgEnabled then
+                    for _,v in pairs(hit.Parent:GetChildren()) do
+                        if v:IsA("Part") then
+                            firetouchinterest(v,handle,0)
+                            firetouchinterest(v,handle,1)
+                        end
+                    end
+                else
+                    firetouchinterest(hit,handle,0)
+                    firetouchinterest(hit,handle,1)
+                end
+            end
+        end
+    
+        local function getWhiteList()
+            local wl = {}
+            for _,v in pairs(game.Players:GetPlayers()) do
+                if v ~= plr then
+                    local char = v.Character
+                    if char then
+                        for _,q in pairs(char:GetChildren()) do
+                            if q:IsA("Part") then
+                                table.insert(wl,q)
+                            end
+                        end
+                    end
+                end
+            end
+            return wl
+        end
+    
+        game:GetService("RunService").RenderStepped:connect(function()
+            if not active or not trueActive then return end
+            local s = plr.Character and plr.Character:FindFirstChildOfClass("Tool")
+            if not s then visualizer.Parent = nil end
+            if s then
+                local handle = s:FindFirstChild("Handle") or s:FindFirstChildOfClass("Part")
+                if handle then
+                    if visualizerEnabled then
+                        visualizer.Parent = workspace
+                    else
+                        visualizer.Parent = nil
+                    end
+                    local reach = tonumber(TextBox.Text)
+                    if reach then
+                        if reachType == "Sphere" then
+                            visualizer.Shape = Enum.PartType.Ball
+                            visualizer.Size = Vector3.new(reach,reach,reach)
+                            visualizer.CFrame = handle.CFrame
+                            for _,v in pairs(game.Players:GetPlayers()) do
+                                local hrp = v.Character and v.Character:FindFirstChild("HumanoidRootPart")
+                                if hrp and handle then
+                                    local mag = (hrp.Position-handle.Position).magnitude
+                                    if mag <= reach then
+                                        onHit(hrp,handle)
+                                    end
+                                end
+                            end
+                        elseif reachType == "Line" then
+                            local origin = (handle.CFrame*CFrame.new(0,0,-2)).p
+                            local ray = Ray.new(origin,handle.CFrame.lookVector*-reach)
+                            local p,pos = workspace:FindPartOnRayWithWhitelist(ray,getWhiteList())
+                            visualizer.Shape = Enum.PartType.Block
+                            visualizer.Size = Vector3.new(1,0.8,reach)
+                            visualizer.CFrame = handle.CFrame*CFrame.new(0,0,(reach/2)+2)
+                            if p then
+                                onHit(p,handle)
+                            else
+                                for _,v in pairs(handle:GetTouchingParts()) do
+                                    onHit(v,handle)
+                                end
+                            end
+                        end
+                    end
+                end
+            end
+        end)
+    
+	end,
+})
+
+local Toggle = Tab:CreateToggle({
+	Name = "Infinite Jump",
+	CurrentValue = false,
+	Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+	Callback = function(Value)
+		local Player = game:GetService'Players'.LocalPlayer;
+local UIS = game:GetService'UserInputService';
+ 
+_G.JumpHeight = 50;
+ 
+function Action(Object, Function) if Object ~= nil then Function(Object); end end
+ 
+UIS.InputBegan:connect(function(UserInput)
+if UserInput.UserInputType == Enum.UserInputType.Keyboard and UserInput.KeyCode == Enum.KeyCode.Space then
+Action(Player.Character.Humanoid, function(self)
+if self:GetState() == Enum.HumanoidStateType.Jumping or self:GetState() == Enum.HumanoidStateType.Freefall then
+Action(self.Parent.HumanoidRootPart, function(self)
+self.Velocity = Vector3.new(0, _G.JumpHeight, 0);
+end)
+end
+end)
+end
+end)
+    		-- The variable (Value) is a boolean on whether the toggle is true or false
+	end,
+})
+
+local Button = Tab:CreateButton({
+	Name = "ESP",
+	Callback = function()
+		local color = BrickColor.new(50,0,250)
+local transparency = .8
+
+local Players = game:GetService("Players")
+local function _ESP(c)
+  repeat wait() until c.PrimaryPart ~= nil
+  for i,p in pairs(c:GetChildren()) do
+    if p.ClassName == "Part" or p.ClassName == "MeshPart" then
+      if p:FindFirstChild("shit") then p.shit:Destroy() end
+      local a = Instance.new("BoxHandleAdornment",p)
+      a.Name = "shit"
+      a.Size = p.Size
+      a.Color = color
+      a.Transparency = transparency
+      a.AlwaysOnTop = true    
+      a.Visible = true    
+      a.Adornee = p
+      a.ZIndex = true    
+
+    end
+  end
+end
+local function ESP()
+  for i,v in pairs(Players:GetChildren()) do
+    if v ~= game.Players.LocalPlayer then
+      if v.Character then
+        _ESP(v.Character)
+      end
+      v.CharacterAdded:Connect(function(chr)
+        _ESP(chr)
+      end)
+    end
+  end
+  Players.PlayerAdded:Connect(function(player)
+    player.CharacterAdded:Connect(function(chr)
+      _ESP(chr)
+    end)  
+  end)
+end
+ESP()
+	end,
+})
+
+local Tab = Window:CreateTab("Misc", 4483362458) -- Title, Image
+local Section = Tab:CreateSection("Misc stuff")
+
+local Button = Tab:CreateButton({
+	Name = "NoCollisions",
+	Callback = function()
+        local Why = game:GetService("Players").LocalPlayer
+		local Char = Why.Character
+		local backpack = Why.Backpack
+
+		backpack.Block.Parent =  Why.Character
+		Char.Block.Left:Destroy()
+		Char.Block.Parent = Why.Backpack
+		
+	end,
+})
+
+local Button = Tab:CreateButton({
+	Name = "AntiHb",
+	Callback = function()
+        print("Clicked")
+        if game.Players.LocalPlayer.Character ~= nil then
+            local char = game.Players.LocalPlayer.Character
+            char.Parent = nil
+            char.HumanoidRootPart:Destroy()
+            char.Parent = workspace
+        end
+    
+	end,
+}) 
+
+local Button = Tab:CreateButton({
+	Name = "Fling All",
+	Callback = function()
+        local Adrix        = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+		wait(0.01)
+		ZZ = game:GetService('RunService').Stepped:connect(function()
+			for i,v in pairs(game:GetService("Players").LocalPlayer.Character:GetChildren()) do
+				if v:IsA("BasePart") then 
+					v.CanCollide = false
+				end
+			end
+		end)
+		local BG = Instance.new('BodyGyro', game:GetService("Players").LocalPlayer.Character.Torso)
+		local BV     = Instance.new('BodyVelocity', game:GetService("Players").LocalPlayer.Character.Torso)
+		BG.P         = 9e4
+		BG.maxTorque = Vector3.new(9e9, 9e9, 9e9)
+		BG.cframe    = game:GetService("Players").LocalPlayer.Character.Torso.CFrame
+		BV.velocity  = Vector3.new(0, 3.75, 0)
+		BV.maxForce  = Vector3.new(9e9, 9e9, 9e9)
+		wait()
+		NoLol = game:GetService('RunService').Heartbeat:connect(function()
+			for i,v in next, game:GetService("Players").LocalPlayer.Character:GetDescendants() do
+				if v:IsA("BasePart") and v.Name ~="Torso" then 
+					v.Velocity = Vector3.new(0,-2333333,0)
+				end
+			end
+		end)
+		XD = game:GetService("Players").LocalPlayer
+
+		for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+			if v.Name ~= XD.Name then
+				if v.Character:FindFirstChild('Role') and v.Character:FindFirstChild('Torso') then
+					wait(0.1)
+					XD.Character:FindFirstChild('HumanoidRootPart').CFrame = v.Character:FindFirstChild('HumanoidRootPart').CFrame + Vector3.new(0,-3.9,0)
+					wait(0.1)
+					XD.Character:FindFirstChild('HumanoidRootPart').CFrame = v.Character:FindFirstChild('HumanoidRootPart').CFrame + Vector3.new(0,4,0)
+					wait(0.1)
+				end 
+			end    
+		end
+		wait(0.2)
+		ZZ:Disconnect()
+
+		NoLol:Disconnect()
+		wait(0.1)
+		BG:Destroy()
+		BV:Destroy()
+		game.Players.LocalPlayer.Character:FindFirstChild('HumanoidRootPart').CFrame = Adrix
+		game.Players.LocalPlayer.Character:FindFirstChild('Humanoid').PlatformStand = true
+		wait()
+		game.Players.LocalPlayer.Character:FindFirstChild('Humanoid').PlatformStand = false
+		
+
+	end,
+})
+
+local Button = Tab:CreateButton({
+	Name = "AntiRoundKill",
+	Callback = function()
+        print("Clicked")
+        print("Clicked")
+        workspace.FallenPartsDestroyHeight = -math.huge
+    
+	end,
+})
+
+local Button = Tab:CreateButton({
+	Name = "Equip All Tools",
+	Callback = function()
+		print("Clicked")
+	for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+		if v:IsA("Tool") then
+			v.Parent = game.Players.LocalPlayer.Character
+		end
+	end
+
+	end,
+})
+
+local Button = Tab:CreateButton({
+	Name = "INF yield",
+	Callback = function()
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+	end,
+})
+
+local Tab = Window:CreateTab("Teleports", 4483362458) -- Title, Image
+local Section = Tab:CreateSection("Teleport to places")
+
+local Button = Tab:CreateButton({
+	Name = "Lobby TP",
+	Callback = function()
+		print("Clicked")
+	game:GetService('Players').LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2, 268, 1)
+
+	end,
+})
+
+local Button = Tab:CreateButton({
+	Name = "Middle TP",
+	Callback = function()
+		print("Clicked")
+	game:GetService('Players').LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2, 171, -9)
+
+	end,
+})
+
+local Button = Tab:CreateButton({
+	Name = "Mega VIP TP",
+	Callback = function()
+		print("Clicked")
+	game:GetService('Players').LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1.06104672, 264, 72.2138901)
+
+	end,
+})
+
+local Tab = Window:CreateTab("Others", 4483362458) -- Title, Image
+local Section = Tab:CreateSection("Other Scripts!")
+
+local Button = Tab:CreateButton({
+	Name = "VesoLux V1.0.0",
+	Callback = function()
+		loadstring(game:HttpGet"https://raw.githubusercontent.com/DeveloperAlex0/VesoLux/main/main.lua")()
+	end,
+})
+
+local Button = Tab:CreateButton({
+	Name = "Ro-Flux",
+	Callback = function()
+		--- https://discord.gg/8gNrnWmgcb
+pcall(function()
+  loadstring(game:HttpGet("https://roflux.net/scripts/games/" .. tostring(game.PlaceId) .. ".lua"))()
+end)
+	end,
+})
+
+local Button = Tab:CreateButton({
+	Name = "Hawk HUB",
+	Callback = function()
+		loadstring(game:HttpGet("https://hawksoftworks.ga/SerdarImNotStranger.lua",true))();
+	end,
+})
+
+local Button = Tab:CreateButton({
+	Name = "Offia Hub V4 Paid",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/TimeManipulator/OffiaHub/main/TMH?token=GHSAT0AAAAAAB4QXDVLEGE2SCG3A4EJ3VKGY47WEJA"))();
+	end,
+})
+
+local Button = Tab:CreateButton({
+	Name = "Skywars GUI",
+	Callback = function()
+		loadstring(game:HttpGet("https://paste.ee/r/r9gnA", true))()
+	
+	--SUBSCRIBE TO BetterHax
+	end,
+})
+
+local Button = Tab:CreateButton({
+	Name = "Russian Hub",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/natalieluvu/PublicSkywars/main/SkywarsChecking"))()
+	end,
+})
+
+local Button = Tab:CreateButton({
+	Name = "Linkvertise Gay",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/TimeManipulator/Linkvertise-Gay/main/L-G?token=GHSAT0AAAAAAB4QXDVK76IO5MFTCQHWZMU4Y47W47A"))();
+	end,
+})
+
+local Button = Tab:CreateButton({
+	Name = "OP Skywars GUI",
+	Callback = function()
+		loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/DohmBoyOG/Script-Dump/main/OPSkywarsGUI_NolixXDohmScripts_Public.lua"))()
+	end,
+})
