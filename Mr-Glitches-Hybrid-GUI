@@ -1,1 +1,587 @@
 
+
+   --Main
+   local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+   local Window = Library.CreateLib("Booga Booga Hybrid", "Serpent")
+   local Tab = Window:NewTab("Main")
+   local Section = Tab:NewSection("Main")
+   Section:NewKeybind("Keybind", "Click to set keybind", Enum.KeyCode.F, function()
+   Library:ToggleUI()
+   end)
+   Section:NewButton("Dupe", "Dupe Any item", function()
+      local repStorage = game:GetService("ReplicatedStorage")
+
+      local function impact(playerOrModel)
+          repStorage.Events.Bow.Impact:FireServer({
+              location = Vector3.zero,
+              weaponName = "The Meatmaker",
+              id = 1,
+              hit = playerOrModel
+          })
+      end
+      
+      --[[
+      StorageSwap:
+      a1,a2,a3;
+      inventorySlot,amount,ToFrom(false: in)
+      ]]
+      local inventory = getrenv()._G.data.inventory
+      local function GetItemSlot(itemname)
+          for i,v in ipairs(inventory) do
+              if v.name == itemname then
+                  return i
+              end
+          end
+      
+          return -1
+      end
+      
+      local function EmptyLootBag(bag)
+          repStorage.Events.OpenStorage:FireServer(bag)
+      
+          local swap = repStorage.Events.StorageSwap
+          swap:FireServer(1,math.huge,true)
+      end
+      
+      for i,v in ipairs(workspace.Deployables:GetChildren()) do
+          if v.Name ~= "Chest" then continue end
+      
+          repStorage.Events.OpenStorage:FireServer(v)
+      
+          local swap = repStorage.Events.StorageSwap
+          swap:FireServer(GetItemSlot("Big Domestic Shelly"),math.huge,false)
+      
+          spawn(function()
+              local swap = repStorage.Events.StorageSwap
+              swap:FireServer(1,math.huge,true)
+          end)
+      
+          impact(v)
+      
+          repeat task.wait(.1) until workspace:FindFirstChild("Loot")
+      
+      
+          for i,v in ipairs(workspace:GetChildren()) do
+              if v.Name ~= "Loot" then continue end
+      
+              EmptyLootBag(v)
+          end
+      
+          wait(0.3)
+      end
+   end)
+   --Armour
+   local Tab = Window:NewTab("Armour")
+   local Section = Tab:NewSection("Craft Armour's")
+   Section:NewButton("God Armour", "Craft a full set of God armour", function()
+      wait(0.7)
+      local args = {
+          [1] = "God Halo"
+      }
+      
+      game:GetService("ReplicatedStorage").Events.CraftItem:FireServer(unpack(args))
+      wait(0.7)
+      
+      local args = {
+          [1] = "God Chestplate"
+      }
+      
+      game:GetService("ReplicatedStorage").Events.CraftItem:FireServer(unpack(args))
+      wait(0.7)
+      
+      local args = {
+          [1] = "God Legs"
+      }
+      
+      game:GetService("ReplicatedStorage").Events.CraftItem:FireServer(unpack(args))
+      
+      
+  end)
+  Section:NewButton("Void Armour", "Craft a full set of Void armour", function()
+   wait(0.7)
+   local args = {
+       [1] = "Void Shroud"
+   }
+   
+   game:GetService("ReplicatedStorage").Events.CraftItem:FireServer(unpack(args))
+   wait(0.7)
+   
+   local args = {
+       [1] = "Void Chestplate"
+   }
+   
+   game:GetService("ReplicatedStorage").Events.CraftItem:FireServer(unpack(args))
+   wait(0.7)
+   
+   local args = {
+       [1] = "Void Greaves"
+   }
+   
+   game:GetService("ReplicatedStorage").Events.CraftItem:FireServer(unpack(args))
+   
+   
+end)
+Section:NewButton("Emerald Armour", "Craft a full set of Emerald armour", function()
+   wait(0.7)
+   local args = {
+       [1] = "Emerald Helmet"
+   }
+   
+   game:GetService("ReplicatedStorage").Events.CraftItem:FireServer(unpack(args))
+   wait(0.7)
+   
+   local args = {
+       [1] = "Emerald Chestplate"
+   }
+   
+   game:GetService("ReplicatedStorage").Events.CraftItem:FireServer(unpack(args))
+   wait(0.7)
+   
+   local args = {
+       [1] = "Emerald Greaves"
+   }
+   
+   game:GetService("ReplicatedStorage").Events.CraftItem:FireServer(unpack(args))
+   
+   
+end)
+--Weapons
+local Tab = Window:NewTab("Weapons")
+local Section = Tab:NewSection("Melee")
+
+Section:NewButton("God Rock", "Craft the God Rock", function()
+local args = {
+   [1] = "God Rock"
+}
+game:GetService("ReplicatedStorage").Events.CraftItem:FireServer(unpack(args))
+end)
+Section:NewButton("Emerald Blade", "Craft the Emerald Blade", function()
+   local args = {
+      [1] = "Emerald Blade"
+   }
+   game:GetService("ReplicatedStorage").Events.CraftItem:FireServer(unpack(args))
+end)
+Section:NewButton("Candycane Pick", "Craft the Candycane Pick", function()
+   local args = {
+      [1] = "Candy Cane Pick"
+   }
+   game:GetService("ReplicatedStorage").Events.CraftItem:FireServer(unpack(args))
+end)
+Section:NewButton("Christmas Tree", "Craft the Christmas tree", function()
+   local args = {
+      [1] = "Cristmas Tree Stick"
+   }
+   game:GetService("ReplicatedStorage").Events.CraftItem:FireServer(unpack(args))
+end)
+local Section = Tab:NewSection("Bow")
+
+Section:NewButton("God Crossbow", "Craft the God Crossbow", function()
+   local args = {
+      [1] = "God Crossbow"
+   }
+   game:GetService("ReplicatedStorage").Events.CraftItem:FireServer(unpack(args))
+end)Section:NewButton("Magnitite Crossbow", "Craft the Magnitite Crossbow", function()
+   local args = {
+      [1] = "Magnetite Crossbow"
+   }
+   game:GetService("ReplicatedStorage").Events.CraftItem:FireServer(unpack(args))
+end)Section:NewButton("Iron Bow", "Craft the Iron Bow", function()
+   local args = {
+      [1] = "Iron Bow"
+   }
+   game:GetService("ReplicatedStorage").Events.CraftItem:FireServer(unpack(args))
+end)
+Section:NewButton("Bow", "Craft the Bow", function()
+   local args = {
+      [1] = "Bow"
+   }
+   game:GetService("ReplicatedStorage").Events.CraftItem:FireServer(unpack(args))
+end)
+
+   --Gods
+   local Tab = Window:NewTab("Gods")
+   local Section = Tab:NewSection("Kill Gods")
+   Section:NewButton("Wealthy God", "Kills the Wealthy God", function()
+   local args = {
+      [1] = {
+         ["location"] = Vector3.new(104.04450988769531, 236.08602905273438, -1111.8642578125),
+         ["weaponName"] = "The Meatmaker",
+         ["id"] = 1,
+         ["hit"] = workspace.Resources:FindFirstChild("Wealthy God")
+      }
+   }
+
+   game:GetService("ReplicatedStorage").Events.Bow.Impact:FireServer(unpack(args))
+   end)
+   Section:NewButton("Lonely God", "Kills the Lonely God", function()
+   local args = {
+      [1] = {
+         ["location"] = Vector3.new(104.04450988769531, 236.08602905273438, -1111.8642578125),
+         ["weaponName"] = "The Meatmaker",
+         ["id"] = 1,
+         ["hit"] = workspace.Resources:FindFirstChild("Lonely God")
+      }
+   }
+
+   game:GetService("ReplicatedStorage").Events.Bow.Impact:FireServer(unpack(args))
+   end)
+   Section:NewButton("Miserable God", "Kills the Miserable God", function()
+   local args = {
+      [1] = {
+         ["location"] = Vector3.new(104.04450988769531, 236.08602905273438, -1111.8642578125),
+         ["weaponName"] = "The Meatmaker",
+         ["id"] = 1,
+         ["hit"] = workspace.Resources:FindFirstChild("Miserable God")
+      }
+   }
+
+   game:GetService("ReplicatedStorage").Events.Bow.Impact:FireServer(unpack(args))
+   end)
+   Section:NewButton("Radiant God", "Kills the Radiant God", function()
+   local args = {
+      [1] = {
+         ["location"] = Vector3.new(104.04450988769531, 236.08602905273438, -1111.8642578125),
+         ["weaponName"] = "The Meatmaker",
+         ["id"] = 1,
+         ["hit"] = workspace.Resources:FindFirstChild("Radiant God")
+      }
+   }
+
+   game:GetService("ReplicatedStorage").Events.Bow.Impact:FireServer(unpack(args))
+   end)
+   Section:NewButton("Hateful God", "Kills the Hateful God", function()
+   local args = {
+      [1] = {
+         ["location"] = Vector3.new(104.04450988769531, 236.08602905273438, -1111.8642578125),
+         ["weaponName"] = "The Meatmaker",
+         ["id"] = 1,
+         ["hit"] = workspace.Resources:FindFirstChild("Hateful God")
+      }
+   }
+
+   game:GetService("ReplicatedStorage").Events.Bow.Impact:FireServer(unpack(args))
+   end)
+
+   --Animals
+   local Tab = Window:NewTab("Kills Animals")
+   --Boss
+   local Section = Tab:NewSection("Boss")
+   Section:NewButton("Lamia", "Kills Lamia", function()
+   local args = {
+      [1] = {
+         ["location"] = Vector3.new(-93.35623168945312, -7.211350917816162, 882.0923461914062),
+         ["weaponName"] = "The Meatmaker",
+         ["id"] = 1,
+         ["hit"] = workspace.Sharks:FindFirstChild("Lamia")
+      }
+   }
+
+   game:GetService("ReplicatedStorage").Events.Bow.Impact:FireServer(unpack(args))
+   end)
+   Section:NewButton("Cetus", "Kills Cetus", function()
+   local args = {
+      [1] = {
+         ["location"] = Vector3.new(-93.35623168945312, -7.211350917816162, 882.0923461914062),
+         ["weaponName"] = "The Meatmaker",
+         ["id"] = 1,
+         ["hit"] = workspace.Sharks:FindFirstChild("Cetus")
+      }
+   }
+
+   game:GetService("ReplicatedStorage").Events.Bow.Impact:FireServer(unpack(args))
+   end)
+   Section:NewButton("Queen Ant", "Kills Queen Ant", function()
+   local args = {
+      [1] = {
+         ["location"] = Vector3.new(-93.35623168945312, -7.211350917816162, 882.0923461914062),
+         ["weaponName"] = "The Meatmaker",
+         ["id"] = 1,
+         ["hit"] = workspace.Critters:FindFirstChild("Queen Ant")
+      }
+   }
+
+   game:GetService("ReplicatedStorage").Events.Bow.Impact:FireServer(unpack(args))
+   end)
+   Section:NewButton("Queen Penguin", "Kills Queen Penguin", function()
+   local args = {
+      [1] = {
+         ["location"] = Vector3.new(385.8164367675781, 2.410536050796509, -1828.42529296875),
+         ["weaponName"] = "The Meatmaker",
+         ["id"] = 1,
+         ["hit"] = workspace.Critters:FindFirstChild("Queen Penguin")
+      }
+   }
+
+   game:GetService("ReplicatedStorage").Events.Bow.Impact:FireServer(unpack(args))
+
+   end)
+
+   --Sharks
+   local Section = Tab:NewSection("Sharks")
+   Section:NewButton("Domestic Goldy Boi", "Kills A Random Domestic Goldy Boi", function()
+   local args = {
+      [1] = {
+         ["location"] = Vector3.new(-619.865966796875, -8.642622947692871, 530.4719848632812),
+         ["weaponName"] = "The Meatmaker",
+         ["id"] = 1,
+         ["hit"] = workspace.Critters:FindFirstChild("Domestic Goldy Boi")
+      }
+   }
+
+   game:GetService("ReplicatedStorage").Events.Bow.Impact:FireServer(unpack(args))
+
+   end)
+   Section:NewButton("Goldy Boi", "Kills A Random Goldy Boi", function()
+   local args = {
+      [1] = {
+         ["location"] = Vector3.new(-93.35623168945312, -7.211350917816162, 882.0923461914062),
+         ["weaponName"] = "The Meatmaker",
+         ["id"] = 1,
+         ["hit"] = workspace.Sharks:FindFirstChild("Goldy Boi")
+      }
+   }
+
+   game:GetService("ReplicatedStorage").Events.Bow.Impact:FireServer(unpack(args))
+   end)
+   Section:NewButton("Lurky Boi", "Kills A Random Lurky Boi", function()
+   local args = {
+      [1] = {
+         ["location"] = Vector3.new(-93.35623168945312, -7.211350917816162, 882.0923461914062),
+         ["weaponName"] = "The Meatmaker",
+         ["id"] = 1,
+         ["hit"] = workspace.Sharks:FindFirstChild("Lurky Boi")
+      }
+   }
+
+   game:GetService("ReplicatedStorage").Events.Bow.Impact:FireServer(unpack(args))
+   end)
+   Section:NewButton("Great White", "Kills A Random Great White", function()
+   local args = {
+      [1] = {
+         ["location"] = Vector3.new(-93.35623168945312, -7.211350917816162, 882.0923461914062),
+         ["weaponName"] = "The Meatmaker",
+         ["id"] = 1,
+         ["hit"] = workspace.Sharks:FindFirstChild("Great White")
+      }
+   }
+
+   game:GetService("ReplicatedStorage").Events.Bow.Impact:FireServer(unpack(args))
+   end)
+   --Mammoths
+   local Section = Tab:NewSection("Mammoths")
+   Section:NewButton("Sand Mammoth", "Kills A Random Sand Mammoth", function()
+   local args = {
+      [1] = {
+         ["location"] = Vector3.new(772.1273803710938, 2.944119930267334, 869.5546264648438),
+         ["weaponName"] = "The Meatmaker",
+         ["id"] = 1,
+         ["hit"] = workspace.Critters:FindFirstChild("Sand Mammoth")
+      }
+   }
+
+   game:GetService("ReplicatedStorage").Events.Bow.Impact:FireServer(unpack(args))
+   end)
+   Section:NewButton("Baby Sand Mammoth", "Kills A Random Baby Sand Mammoth", function()
+   local args = {
+      [1] = {
+         ["location"] = Vector3.new(772.1273803710938, 2.944119930267334, 869.5546264648438),
+         ["weaponName"] = "The Meatmaker",
+         ["id"] = 1,
+         ["hit"] = workspace.Critters:FindFirstChild("Baby Sand Mammoth")
+      }
+   }
+
+   game:GetService("ReplicatedStorage").Events.Bow.Impact:FireServer(unpack(args))
+   end)
+   Section:NewButton("Snow Mammoth", "Kills A Random Snow Mammoth", function()
+   local args = {
+      [1] = {
+         ["location"] = Vector3.new(772.1273803710938, 2.944119930267334, 869.5546264648438),
+         ["weaponName"] = "The Meatmaker",
+         ["id"] = 1,
+         ["hit"] = workspace.Critters:FindFirstChild("Snow Mammoth")
+      }
+   }
+
+   game:GetService("ReplicatedStorage").Events.Bow.Impact:FireServer(unpack(args))
+   end)
+   Section:NewButton("Baby Snow Mammoth", "Kills A Random Baby Snow Mammoth", function()
+   local args = {
+      [1] = {
+         ["location"] = Vector3.new(772.1273803710938, 2.944119930267334, 869.5546264648438),
+         ["weaponName"] = "The Meatmaker",
+         ["id"] = 1,
+         ["hit"] = workspace.Critters:FindFirstChild("Baby Snow Mammoth")
+      }
+   }
+
+   game:GetService("ReplicatedStorage").Events.Bow.Impact:FireServer(unpack(args))
+   end)
+   --Bantos
+   local Section = Tab:NewSection("Bantos")
+   Section:NewButton("Banto", "Kills A Random Banto", function()
+   local args = {
+      [1] = {
+         ["location"] = Vector3.new(772.1273803710938, 2.944119930267334, 869.5546264648438),
+         ["weaponName"] = "The Meatmaker",
+         ["id"] = 1,
+         ["hit"] = workspace.Critters:FindFirstChild("Banto")
+      }
+   }
+
+   game:GetService("ReplicatedStorage").Events.Bow.Impact:FireServer(unpack(args))
+   end)
+   Section:NewButton("Lil Banto", "Kills A Random Lil Banto", function()
+   local args = {
+      [1] = {
+         ["location"] = Vector3.new(772.1273803710938, 2.944119930267334, 869.5546264648438),
+         ["weaponName"] = "The Meatmaker",
+         ["id"] = 1,
+         ["hit"] = workspace.Critters:FindFirstChild("Lil Banto")
+      }
+   }
+
+   game:GetService("ReplicatedStorage").Events.Bow.Impact:FireServer(unpack(args))
+   end)
+   Section:NewButton("Crystal Banto", "Kills A Random Crystal Banto", function()
+   local args = {
+      [1] = {
+         ["location"] = Vector3.new(772.1273803710938, 2.944119930267334, 869.5546264648438),
+         ["weaponName"] = "The Meatmaker",
+         ["id"] = 1,
+         ["hit"] = workspace.Critters:FindFirstChild("Crystal Banto")
+      }
+   }
+
+   game:GetService("ReplicatedStorage").Events.Bow.Impact:FireServer(unpack(args))
+   end)
+   Section:NewButton("Golden Banto", "Kills A Random Golden Banto", function()
+   local args = {
+      [1] = {
+         ["location"] = Vector3.new(772.1273803710938, 2.944119930267334, 869.5546264648438),
+         ["weaponName"] = "The Meatmaker",
+         ["id"] = 1,
+         ["hit"] = workspace.Critters:FindFirstChild("Golden Banto")
+      }
+   }
+
+   game:GetService("ReplicatedStorage").Events.Bow.Impact:FireServer(unpack(args))
+   end)
+   Section:NewButton("Rento", "Kills A Random Rento", function()
+   local args = {
+      [1] = {
+         ["location"] = Vector3.new(772.1273803710938, 2.944119930267334, 869.5546264648438),
+         ["weaponName"] = "The Meatmaker",
+         ["id"] = 1,
+         ["hit"] = workspace.Critters.Rento
+      }
+   }
+
+   game:GetService("ReplicatedStorage").Events.Bow.Impact:FireServer(unpack(args))
+   end)
+   Section:NewButton("Rentae", "Kills A Random Rentae", function()
+   local args = {
+      [1] = {
+         ["location"] = Vector3.new(-104.47655487060547, -3.3844966888427734, -657.6260375976562),
+         ["weaponName"] = "The Meatmaker",
+         ["id"] = 1,
+         ["hit"] = workspace.Critters.Rentae
+      }
+   }
+
+   game:GetService("ReplicatedStorage").Events.Bow.Impact:FireServer(unpack(args))
+
+   end)
+   --Shelly
+   local Section = Tab:NewSection("Shellys")
+   Section:NewButton("Stone Shelly", "Kills A Random Stone Shelly", function()
+   local args = {
+      [1] = {
+         ["location"] = Vector3.new(-104.47655487060547, -3.3844966888427734, -657.6260375976562),
+         ["weaponName"] = "The Meatmaker",
+         ["id"] = 1,
+         ["hit"] = workspace.Critters:FindFirstChild("Stone Shelly")
+      }
+   }
+
+   game:GetService("ReplicatedStorage").Events.Bow.Impact:FireServer(unpack(args))
+
+   end)
+   Section:NewButton("Big Stone Shelly", "Kills A Random Big Stone Shelly", function()
+   local args = {
+      [1] = {
+         ["location"] = Vector3.new(-104.47655487060547, -3.3844966888427734, -657.6260375976562),
+         ["weaponName"] = "The Meatmaker",
+         ["id"] = 1,
+         ["hit"] = workspace.Critters:FindFirstChild("Big Stone Shelly")
+      }
+   }
+
+   game:GetService("ReplicatedStorage").Events.Bow.Impact:FireServer(unpack(args))
+
+   end)
+   Section:NewButton("Coal Shelly", "Kills A Random Coal Shelly", function()
+   local args = {
+      [1] = {
+         ["location"] = Vector3.new(-104.47655487060547, -3.3844966888427734, -657.6260375976562),
+         ["weaponName"] = "The Meatmaker",
+         ["id"] = 1,
+         ["hit"] = workspace.Critters:FindFirstChild("Coal Shelly")
+      }
+   }
+
+   game:GetService("ReplicatedStorage").Events.Bow.Impact:FireServer(unpack(args))
+
+   end)
+   Section:NewButton("Adurite Shelly", "Kills A Random Adurite Shelly ", function()
+   local args = {
+      [1] = {
+         ["location"] = Vector3.new(-104.47655487060547, -3.3844966888427734, -657.6260375976562),
+         ["weaponName"] = "The Meatmaker",
+         ["id"] = 1,
+         ["hit"] = workspace.Critters:FindFirstChild("Adurite Shelly")
+      }
+   }
+
+   game:GetService("ReplicatedStorage").Events.Bow.Impact:FireServer(unpack(args))
+
+   end)
+   Section:NewButton("Crystal Shelly", "Kills A Random Crystal Shelly ", function()
+   local args = {
+      [1] = {
+         ["location"] = Vector3.new(-104.47655487060547, -3.3844966888427734, -657.6260375976562),
+         ["weaponName"] = "The Meatmaker",
+         ["id"] = 1,
+         ["hit"] = workspace.Critters:FindFirstChild("Crystal Shelly")
+      }
+   }
+
+   game:GetService("ReplicatedStorage").Events.Bow.Impact:FireServer(unpack(args))
+
+   end)
+   Section:NewButton("Iron Shelly", "Kills A Random Iron Shelly ", function()
+   local args = {
+      [1] = {
+         ["location"] = Vector3.new(-104.47655487060547, -3.3844966888427734, -657.6260375976562),
+         ["weaponName"] = "The Meatmaker",
+         ["id"] = 1,
+         ["hit"] = workspace.Critters:FindFirstChild("Iron Shelly")
+      }
+   }
+
+   game:GetService("ReplicatedStorage").Events.Bow.Impact:FireServer(unpack(args))
+
+   end)
+   Section:NewButton("Gold Shelly", "Kills A Random Gold Shelly", function()
+   local args = {
+      [1] = {
+         ["location"] = Vector3.new(-104.47655487060547, -3.3844966888427734, -657.6260375976562),
+         ["weaponName"] = "The Meatmaker",
+         ["id"] = 1,
+         ["hit"] = workspace.Critters:FindFirstChild("Gold Shelly")
+      }
+   }
+
+   game:GetService("ReplicatedStorage").Events.Bow.Impact:FireServer(unpack(args))
+
+   end)
